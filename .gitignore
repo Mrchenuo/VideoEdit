@@ -1,9 +1,7 @@
-
 *.mp4
 *.avi
-*.png
 bin/opencv_world340.dll
 bin/opencv_world340d.dll
-/src/XVideoEdit/x64/Debug
-/src/XVideoEdit/.vs/XVideoEdit/v15
+/src/XVideoEdit/x64
+/src/XVideoEdit/.vs
 /src/XVideoEdit/GeneratedFiles
