@@ -2,3 +2,5 @@
 *.mp4
 *.avi
 *.png
+bin/opencv_world340.dll
+bin/opencv_world340d.dll
