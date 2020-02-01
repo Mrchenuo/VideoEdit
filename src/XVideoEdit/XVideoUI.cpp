@@ -38,6 +38,7 @@ XVideoUI::XVideoUI(QWidget *parent)
 		SLOT(ExportEnd())
 		);
 
+	Pause();
 	startTimer(40);
 }
 
@@ -115,4 +116,20 @@ void XVideoUI::ExportEnd()
 {
 	isExport = false;
 	ui.exportButton->setText(QString::fromLocal8Bit("µ¼³ö"));
+}
+
+void XVideoUI::Play()
+{
+	ui.pauseButton->show();
+	ui.pauseButton->setGeometry(ui.playButton->geometry());
+	XVideoThread::Get()->Play();
+	ui.playButton->hide();
+}
+
+void XVideoUI::Pause()
+{
+	ui.playButton->show();
+	//ui.pauseButton->setGeometry(ui.playButton->geometry());
+	XVideoThread::Get()->Pause();
+	ui.pauseButton->hide();
 }

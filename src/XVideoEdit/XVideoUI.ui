@@ -50,6 +50,29 @@ QLabel
 	background-color: rgb(16, 16, 16);
 }
 
+#playButton
+{background-color: rgba(255, 255, 255, 0);}
+
+#playButton:!hover
+{image: url(:/XVideoUI/Resources/PlayN.png);}
+#playButton:hover
+{image: url(:/XVideoUI/Resources/PlayH.png);}
+
+#playButton:pressed
+{image: url(:/XVideoUI/Resources/PlayP.png);}
+
+#pauseButton
+{background-color: rgba(255, 255, 255, 0);}
+
+#pauseButton:!hover
+{image: url(:/XVideoUI/Resources/PauseN.png);}
+#pauseButton:hover
+{image: url(:/XVideoUI/Resources/PauseH.png);}
+
+#pauseButton:pressed
+{image: url(:/XVideoUI/Resources/PauseP.png);}
+
+
 </string>
   </property>
   <widget class="QPushButton" name="closeButton">
@@ -198,6 +221,32 @@ QLabel
     <string>导出</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="playButton">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>410</y>
+     <width>51</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pauseButton">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>410</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -326,6 +375,38 @@ QLabel
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>playButton</sender>
+   <signal>clicked()</signal>
+   <receiver>XVideoUIClass</receiver>
+   <slot>Play()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>271</x>
+     <y>424</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>274</x>
+     <y>-16</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pauseButton</sender>
+   <signal>clicked()</signal>
+   <receiver>XVideoUIClass</receiver>
+   <slot>Pause()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>351</x>
+     <y>423</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>356</x>
+     <y>-18</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>Open()</slot>
@@ -334,5 +415,7 @@ QLabel
   <slot>SetPos(int)</slot>
   <slot>Set()</slot>
   <slot>Export()</slot>
+  <slot>Play()</slot>
+  <slot>Pause()</slot>
  </slots>
 </ui>

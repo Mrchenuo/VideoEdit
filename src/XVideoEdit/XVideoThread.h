@@ -18,7 +18,12 @@ public:
 	}
 	//打开一号视频源文件
 	bool Open(const std::string file);
-	
+
+	//播放视频
+	void Play() { mutex.lock(); isPlay = true; mutex.unlock();}
+	//暂停视频
+	void Pause() { mutex.lock(); isPlay = false; mutex.unlock(); }
+
 	//返回当前播放的位置
 	double getPos();
 
@@ -50,5 +55,7 @@ protected:
 	QMutex mutex;
 	//是否开始写视频
 	bool isWrite = false;
+	//是否开始播放视频
+	bool isPlay = false;
 };
 

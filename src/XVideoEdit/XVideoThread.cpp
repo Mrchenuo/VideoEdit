@@ -130,6 +130,7 @@ void XVideoThread::run()
 	for (;;)
 	{
 		mutex.lock();
+
 		if (isExit)
 		{
 			mutex.unlock();
@@ -137,6 +138,13 @@ void XVideoThread::run()
 		}
 			
 		if (!cap1.isOpened())
+		{
+			mutex.unlock();
+			msleep(5);
+			continue;
+		}
+
+		if (!isPlay)
 		{
 			mutex.unlock();
 			msleep(5);
