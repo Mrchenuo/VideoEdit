@@ -5,14 +5,21 @@
 enum XTaskType
 {
 	XTASK_NONE,
-	XTASK_GAIN,		//亮度对比度调整
+	XTASK_GAIN,				//亮度对比度调整
+	XTASK_ROTATE90,			//旋转90度
+	XTASK_ROTATE180,		//旋转180度
+	XTASK_ROTATE270,		//旋转270度
+	XTASK_FLIPX,			//左右镜像
+	XTASK_FLIPY,			//上下镜像
+	XTASK_FLIPXY,			//上下左右镜像
+	XTASK_RESIZE,			//尺寸调整
 };
 struct  XTask
 {
 	XTaskType type;
 	std::vector<double> para;
-
 };
+
 class XFilter
 {
 public:

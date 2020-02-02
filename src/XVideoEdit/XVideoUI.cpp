@@ -53,12 +53,14 @@ void XVideoUI::Open()
 		QMessageBox::information(this, "error", name + " open failed");
 	}
 
+	Play();
+
 }
 
 void XVideoUI::timerEvent(QTimerEvent * e)
 {
 	if (pressSlider) return;
-	double pos=XVideoThread::Get()->getPos();
+	double pos=XVideoThread::Get()->GetPos();
 	ui.playSlider->setValue(pos * 1000);
 }
 
@@ -80,14 +82,55 @@ void XVideoUI::SetPos(int pos)
 void XVideoUI::Set()
 {
 	XFilter::Get()->Clear();
+
+	//µ÷ÕûÊÓÆµ³ß´ç
+	//double w = ui.width->value();
+	//double h = ui.height->value();
+	if (ui.width->value() > 0 && ui.height->value() > 0)
+	{
+		XFilter::Get()->Add(XTask{ XTASK_RESIZE,
+			{(double)ui.width->value(),(double)ui.height->value()}
+		});
+	}
+
 	//¶Ô±È¶ÈºÍÁÁ¶È
 	if (ui.bright->value() > 0 ||
 		ui.contrast->value() > 1)
 	{
 		XFilter::Get()->Add(XTask{ XTASK_GAIN,
 			{(double)ui.bright->value(),ui.contrast->value()} 
-			});
+		});
 	}
+
+	//Í¼ÏñÐý×ª	1 90	2 180	3 270
+	if (ui.rotate->currentIndex() == 1)
+	{
+		XFilter::Get()->Add(XTask{ XTASK_ROTATE90 });
+	}
+	else if (ui.rotate->currentIndex() == 2)
+	{
+		XFilter::Get()->Add(XTask{ XTASK_ROTATE180 });
+	}
+	else if (ui.rotate->currentIndex() == 3)
+	{
+		XFilter::Get()->Add(XTask{ XTASK_ROTATE270 });
+	}
+
+	//Í¼Ïñ¾µÏñ	1 ÉÏÏÂ¾µÏñ	2 ×óÓÒ¾µÏñ	3 ÉÏÏÂ×óÓÒ¾µÏñ
+	if (ui.flip->currentIndex() == 1)
+	{
+		XFilter::Get()->Add(XTask{ XTASK_FLIPX });
+	}
+	else if (ui.flip->currentIndex() == 2)
+	{
+		XFilter::Get()->Add(XTask{ XTASK_FLIPY });
+	}
+	else if (ui.flip->currentIndex() == 3)
+	{
+		XFilter::Get()->Add(XTask{ XTASK_FLIPXY });
+	}
+
+
 }
 
 void XVideoUI::Export()
@@ -105,7 +148,8 @@ void XVideoUI::Export()
 	if (name.isEmpty())
 		return;
 	std::string filename = name.toLocal8Bit().data();
-	if (XVideoThread::Get()->StartSave(filename))
+
+	if (XVideoThread::Get()->StartSave(filename, ui.width->value(), ui.height->value()))
 	{
 		isExport = true;
 		ui.exportButton->setText(QString::fromLocal8Bit("Í£Ö¹"));

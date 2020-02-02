@@ -20,6 +20,29 @@ public:
 				//亮度对比度调整
 				p.Gain(tasks[i].para[0], tasks[i].para[1]);
 				break;
+
+			//旋转
+			case XTASK_ROTATE90:
+				p.Rotate90();
+				break;
+			case XTASK_ROTATE180:
+				p.Rotate180();
+				break;
+			case XTASK_ROTATE270:
+				p.Rotate270();
+				break;
+			case XTASK_FLIPX:
+				p.FlipX();
+				break;
+			case XTASK_FLIPY:
+				p.FlipY();
+				break;
+			case XTASK_FLIPXY:
+				p.FlipXY();
+				break;
+			case XTASK_RESIZE:
+				p.Resize(tasks[i].para[0],tasks[i].para[1]);
+				break;
 			default:
 				break;
 			}

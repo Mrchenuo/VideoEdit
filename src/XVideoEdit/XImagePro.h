@@ -14,6 +14,22 @@ public:
 	//@para contrast int 对比度 1.0~3.0
 	void Gain(double bright, double contrast);
 
+	//图像旋转
+	void Rotate90();
+	void Rotate180();
+	void Rotate270();
+
+	//上下镜像
+	void FlipX();
+	//左右镜像
+	void FlipY();
+	//上下左右镜像
+	void FlipXY();
+
+
+	//图像尺寸
+	void Resize(int width, int height);
+
 	XImagePro();
 	~XImagePro();
 private:

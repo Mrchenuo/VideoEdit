@@ -25,7 +25,7 @@ public:
 	void Pause() { mutex.lock(); isPlay = false; mutex.unlock(); }
 
 	//返回当前播放的位置
-	double getPos();
+	double GetPos();
 
 	//跳转视频
 	///@para frame int 帧位置

@@ -36,7 +36,7 @@ XVideoThread::XVideoThread()
 }
 
 
-double XVideoThread::getPos()
+double XVideoThread::GetPos()
 {
 	double pos = 0;
 	mutex.lock();
