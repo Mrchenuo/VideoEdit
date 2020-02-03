@@ -336,14 +336,14 @@ QLabel
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>490</x>
+     <x>450</x>
      <y>480</y>
-     <width>101</width>
+     <width>141</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>输出视频宽度</string>
+    <string>输出视频宽度,高度</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="width">
@@ -351,7 +351,7 @@ QLabel
     <rect>
      <x>600</x>
      <y>480</y>
-     <width>101</width>
+     <width>51</width>
      <height>22</height>
     </rect>
    </property>
@@ -359,25 +359,51 @@ QLabel
     <number>9999</number>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QSpinBox" name="height">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>510</y>
-     <width>101</width>
-     <height>20</height>
+     <x>650</x>
+     <y>480</y>
+     <width>51</width>
+     <height>22</height>
     </rect>
    </property>
-   <property name="text">
-    <string>输出视频高度</string>
+   <property name="maximum">
+    <number>9999</number>
    </property>
   </widget>
-  <widget class="QSpinBox" name="height">
+  <widget class="QSpinBox" name="pydown">
    <property name="geometry">
     <rect>
      <x>600</x>
      <y>510</y>
-     <width>101</width>
+     <width>51</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>9999</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>510</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>图像金字塔（高斯、拉普拉斯）</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="pyup">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>510</y>
+     <width>51</width>
      <height>22</height>
     </rect>
    </property>

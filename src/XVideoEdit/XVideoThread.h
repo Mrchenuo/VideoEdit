@@ -10,6 +10,8 @@ class XVideoThread : public QThread
 
 public:
 	int fps = 0;
+	int width = 0;
+	int height = 0;
 
 	static XVideoThread* Get()
 	{

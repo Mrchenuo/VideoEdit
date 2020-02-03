@@ -74,6 +74,26 @@ void XImagePro::Resize(int width, int height)
 	resize(des, des, Size(width, height));
 }
 
+void XImagePro::PyDown(int count)
+{
+	if (des.empty())
+		return;
+	for (int i = 0; i < count; i++)
+	{
+		pyrDown(des, des);
+	}
+}
+
+void XImagePro::PyUp(int count)
+{
+	if (des.empty())
+		return;
+	for (int i = 0; i < count; i++)
+	{
+		pyrUp(des, des);
+	}
+}
+
 XImagePro::XImagePro()
 {
 }

@@ -16,8 +16,8 @@ public:
 		{
 			switch (tasks[i].type)
 			{
-			case XTASK_GAIN:
-				//亮度对比度调整
+			//亮度对比度调整
+			case XTASK_GAIN:				
 				p.Gain(tasks[i].para[0], tasks[i].para[1]);
 				break;
 
@@ -31,6 +31,8 @@ public:
 			case XTASK_ROTATE270:
 				p.Rotate270();
 				break;
+
+			//镜像
 			case XTASK_FLIPX:
 				p.FlipX();
 				break;
@@ -40,8 +42,18 @@ public:
 			case XTASK_FLIPXY:
 				p.FlipXY();
 				break;
+
+			//尺寸调整
 			case XTASK_RESIZE:
 				p.Resize(tasks[i].para[0],tasks[i].para[1]);
+				break;
+
+			//图像金字塔
+			case XTASK_PYDOWN:
+				p.PyDown(tasks[i].para[0]);
+				break;
+			case XTASK_PYUP:
+				p.PyUp(tasks[i].para[0]);
 				break;
 			default:
 				break;

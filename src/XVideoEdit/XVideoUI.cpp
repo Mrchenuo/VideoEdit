@@ -83,9 +83,44 @@ void XVideoUI::Set()
 {
 	XFilter::Get()->Clear();
 
+	//Í¼Ïñ½ð×ÖËþ
+	bool isPy = false;
+	int down = ui.pydown->value();
+	int up= ui.pyup->value();
+
+	if (up > 0)
+	{
+		isPy = true;
+		XFilter::Get()->Add(XTask{ XTASK_PYUP,{(double)up} });
+		int w = XVideoThread::Get()->width;
+		int h = XVideoThread::Get()->height;
+		for (int i = 0; i < up; i++)
+		{
+			w = w * 2;
+			h = h * 2;
+		}
+		ui.width->setValue(w);
+		ui.height->setValue(h);
+	}
+
+	if (down > 0)
+	{
+		isPy = true;
+		XFilter::Get()->Add(XTask{ XTASK_PYDOWN,{(double)down}});
+		int w = XVideoThread::Get()->width;
+		int h = XVideoThread::Get()->height;
+		for (int i = 0; i < down; i++)
+		{
+			w = w / 2;
+			h = h / 2;
+		}
+		ui.width->setValue(w);
+		ui.height->setValue(h);
+	}
+
+	
+
 	//µ÷ÕûÊÓÆµ³ß´ç
-	//double w = ui.width->value();
-	//double h = ui.height->value();
 	if (ui.width->value() > 0 && ui.height->value() > 0)
 	{
 		XFilter::Get()->Add(XTask{ XTASK_RESIZE,

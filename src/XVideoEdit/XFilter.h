@@ -13,6 +13,8 @@ enum XTaskType
 	XTASK_FLIPY,			//上下镜像
 	XTASK_FLIPXY,			//上下左右镜像
 	XTASK_RESIZE,			//尺寸调整
+	XTASK_PYDOWN,			//向下采样(高斯金字塔）
+	XTASK_PYUP,				//向上采样（拉普拉斯金字塔）
 };
 struct  XTask
 {

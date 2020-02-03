@@ -26,9 +26,12 @@ public:
 	//ÉÏÏÂ×óÓÒ¾µÏñ
 	void FlipXY();
 
-
 	//Í¼Ïñ³ß´ç
 	void Resize(int width, int height);
+
+	//Í¼Ïñ½ğ×ÖËş
+	void PyDown(int count);
+	void PyUp(int count);
 
 	XImagePro();
 	~XImagePro();
