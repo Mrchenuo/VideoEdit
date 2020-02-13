@@ -55,6 +55,11 @@ public:
 			case XTASK_PYUP:
 				p.PyUp(tasks[i].para[0]);
 				break;
+
+			//»­Ãæ²Ã¼ô
+			case XTASK_CLIP:
+				p.Clip(tasks[i].para[0], tasks[i].para[1], tasks[i].para[2], tasks[i].para[3]);
+				break;
 			default:
 				break;
 			}

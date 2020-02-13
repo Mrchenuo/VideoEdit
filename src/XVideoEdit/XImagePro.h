@@ -33,6 +33,9 @@ public:
 	void PyDown(int count);
 	void PyUp(int count);
 
+	// ”∆µª≠√Ê≤√ºÙ
+	void Clip(int x, int y, int w, int h);
+
 	XImagePro();
 	~XImagePro();
 private:

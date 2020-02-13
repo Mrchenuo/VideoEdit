@@ -9,6 +9,7 @@
 using namespace std;
 static bool pressSlider = false;
 static bool isExport = false;
+
 XVideoUI::XVideoUI(QWidget *parent)
 	: QWidget(parent)
 {
@@ -82,6 +83,22 @@ void XVideoUI::SetPos(int pos)
 void XVideoUI::Set()
 {
 	XFilter::Get()->Clear();
+	//视频图像裁剪
+	bool isClip = false;//一旦做了裁剪，尺寸调整就不能做了
+	double cx = ui.cx->value();
+	double cy = ui.cy->value();
+	double cw = ui.cw->value();
+	double ch = ui.ch->value();
+	if (cx + cy + cw + ch > 0.0001)
+	{
+		isClip = true;
+		XFilter::Get()->Add(XTask{ XTASK_CLIP,{cx,cy,cw,ch} });
+
+		//由于裁剪后尺寸需要调整
+		XFilter::Get()->Add(XTask{ XTASK_RESIZE,
+			{(double)XVideoThread::Get()->width,(double)XVideoThread::Get()->height}
+			});
+	}
 
 	//图像金字塔
 	bool isPy = false;
@@ -121,7 +138,7 @@ void XVideoUI::Set()
 	
 
 	//调整视频尺寸
-	if (ui.width->value() > 0 && ui.height->value() > 0)
+	if (!isClip && !isPy &&ui.width->value() > 0 && ui.height->value() > 0)
 	{
 		XFilter::Get()->Add(XTask{ XTASK_RESIZE,
 			{(double)ui.width->value(),(double)ui.height->value()}

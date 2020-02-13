@@ -411,6 +411,71 @@ QLabel
     <number>9999</number>
    </property>
   </widget>
+  <widget class="QSpinBox" name="cy">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>540</y>
+     <width>51</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>9999</number>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="cx">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>540</y>
+     <width>51</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>9999</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>540</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>图像裁剪（x,y,w,h)</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="ch">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>540</y>
+     <width>51</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>9999</number>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="cw">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>540</y>
+     <width>51</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>9999</number>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
