@@ -224,8 +224,8 @@ QLabel
   <widget class="QPushButton" name="playButton">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>410</y>
+     <x>600</x>
+     <y>340</y>
      <width>51</width>
      <height>23</height>
     </rect>
@@ -237,8 +237,8 @@ QLabel
   <widget class="QPushButton" name="pauseButton">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>410</y>
+     <x>670</x>
+     <y>340</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -440,9 +440,9 @@ QLabel
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>450</x>
      <y>540</y>
-     <width>221</width>
+     <width>141</width>
      <height>20</height>
     </rect>
    </property>
@@ -474,6 +474,39 @@ QLabel
    </property>
    <property name="maximum">
     <number>9999</number>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="color">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>570</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>RGB图像</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>灰度图像</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>570</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>图像颜色</string>
    </property>
   </widget>
  </widget>

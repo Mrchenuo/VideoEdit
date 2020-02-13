@@ -16,6 +16,7 @@ enum XTaskType
 	XTASK_PYDOWN,			//向下采样(高斯金字塔）
 	XTASK_PYUP,				//向上采样（拉普拉斯金字塔）
 	XTASK_CLIP,				//画面裁剪
+	XTASK_GRAY,				//灰度
 };
 struct  XTask
 {

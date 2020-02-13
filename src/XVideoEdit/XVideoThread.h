@@ -35,7 +35,7 @@ public:
 	bool Seek(double pos);
 	
 	//开始保存视频
-	bool StartSave(const std::string filename, int width=0, int height=0);	
+	bool StartSave(const std::string filename, int width=0, int height=0,bool isColor=true);	
 
 	//停止保存视频，写入视频帧的索引
 	void StopSave();

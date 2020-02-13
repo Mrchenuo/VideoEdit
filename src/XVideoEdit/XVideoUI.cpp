@@ -9,6 +9,7 @@
 using namespace std;
 static bool pressSlider = false;
 static bool isExport = false;
+static bool isColor = true;//是否为彩色图
 
 XVideoUI::XVideoUI(QWidget *parent)
 	: QWidget(parent)
@@ -83,6 +84,7 @@ void XVideoUI::SetPos(int pos)
 void XVideoUI::Set()
 {
 	XFilter::Get()->Clear();
+	isColor = true;
 	//视频图像裁剪
 	bool isClip = false;//一旦做了裁剪，尺寸调整就不能做了
 	double cx = ui.cx->value();
@@ -154,6 +156,13 @@ void XVideoUI::Set()
 		});
 	}
 
+	//灰度图
+	if (ui.color->currentIndex() == 1)
+	{
+		XFilter::Get()->Add(XTask{ XTASK_GRAY });
+		isColor = false;
+	}
+
 	//图像旋转	1 90	2 180	3 270
 	if (ui.rotate->currentIndex() == 1)
 	{
@@ -201,7 +210,7 @@ void XVideoUI::Export()
 		return;
 	std::string filename = name.toLocal8Bit().data();
 
-	if (XVideoThread::Get()->StartSave(filename, ui.width->value(), ui.height->value()))
+	if (XVideoThread::Get()->StartSave(filename, ui.width->value(), ui.height->value(),isColor))
 	{
 		isExport = true;
 		ui.exportButton->setText(QString::fromLocal8Bit("停止"));

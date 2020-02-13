@@ -36,6 +36,9 @@ public:
 	//视频画面裁剪
 	void Clip(int x, int y, int w, int h);
 
+	//转为灰度图
+	void Gray();
+
 	XImagePro();
 	~XImagePro();
 private:

@@ -77,7 +77,7 @@ bool XVideoThread::Seek(double pos)
 	return false;
 }
 
-bool XVideoThread::StartSave(const std::string filename, int width, int height)
+bool XVideoThread::StartSave(const std::string filename, int width, int height, bool isColor)
 {
 	cout << "开始导出" << endl;
 	Seek(0);//从头导出
@@ -96,7 +96,8 @@ bool XVideoThread::StartSave(const std::string filename, int width, int height)
 	vw.open(filename,
 		VideoWriter::fourcc('X', '2', '6', '4'),
 		this->fps,
-		Size(width, height)
+		Size(width, height),
+		isColor
 	);
 	if (!vw.isOpened())
 	{

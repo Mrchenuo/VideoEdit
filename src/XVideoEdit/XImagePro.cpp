@@ -107,6 +107,13 @@ void XImagePro::Clip(int x, int y, int w, int h)
 	des = des(Rect(x, y, w, h));
 }
 
+void XImagePro::Gray()
+{
+	if (des.empty())
+		return;
+	cvtColor(des, des, COLOR_BGR2GRAY);
+}
+
 XImagePro::XImagePro()
 {
 }
