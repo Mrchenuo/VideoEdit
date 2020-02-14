@@ -172,8 +172,9 @@ void XVideoThread::run()
 		if (!isWrite)//在导出时不显示，防止导出过快，堆栈溢出
 			ViewImage1(mat1);
 
+		Mat mat2 = mark;
 		//通过过滤器处理视频 
-		Mat des = XFilter::Get()->Filter(mat1, Mat());
+		Mat des = XFilter::Get()->Filter(mat1, mat2);
 
 		//显示生成图像
 		if (!isWrite)

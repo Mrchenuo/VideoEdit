@@ -2,14 +2,16 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <string>
-
 #include "XVideoThread.h"
 #include "XFilter.h"
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 
 using namespace std;
 static bool pressSlider = false;
 static bool isExport = false;
 static bool isColor = true;//是否为彩色图
+static bool isMark = false;//水印
 
 XVideoUI::XVideoUI(QWidget *parent)
 	: QWidget(parent)
@@ -191,7 +193,13 @@ void XVideoUI::Set()
 		XFilter::Get()->Add(XTask{ XTASK_FLIPXY });
 	}
 
-
+	//水印
+	if (isMark)
+	{
+		XFilter::Get()->Add(XTask{ XTASK_MASK,
+			{(double)ui.mx->value(),(double)ui.my->value(),ui.ma->value()}
+		});
+	}
 }
 
 void XVideoUI::Export()
@@ -237,4 +245,21 @@ void XVideoUI::Pause()
 	//ui.pauseButton->setGeometry(ui.playButton->geometry());
 	XVideoThread::Get()->Pause();
 	ui.pauseButton->hide();
+}
+
+void XVideoUI::Mark()
+{
+	isMark = false;
+	QString name = QFileDialog::getOpenFileName(this, "selet mark image:");
+	if (name.isEmpty())
+	{		
+		return;
+	}
+	std::string file = name.toLocal8Bit().data();
+	cv::Mat mark = cv::imread(file);
+	if (mark.empty())
+		return;
+
+	XVideoThread::Get()->SetMark(mark);
+	isMark = true;
 }

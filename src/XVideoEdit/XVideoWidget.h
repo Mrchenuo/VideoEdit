@@ -13,8 +13,6 @@ public:
 	virtual ~XVideoWidget();
 public slots:
 	void SetImage(cv::Mat mat);
-private:
-	void Mat2QImage(cv::Mat& mat);//Œ¥ π”√
 protected:
 	QImage img;
 };

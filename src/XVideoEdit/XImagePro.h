@@ -39,6 +39,9 @@ public:
 	//转为灰度图
 	void Gray();
 
+	//水印,使用src2存放水印图片
+	void Mark(int x, int y, double alpha);
+
 	XImagePro();
 	~XImagePro();
 private:

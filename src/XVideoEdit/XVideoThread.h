@@ -40,6 +40,9 @@ public:
 	//停止保存视频，写入视频帧的索引
 	void StopSave();
 
+	//添加水印
+	void SetMark(cv::Mat m) { mutex.lock(); this->mark = m; mutex.unlock(); }
+
 	~XVideoThread();
 
 	//线程入口函数
@@ -59,5 +62,7 @@ protected:
 	bool isWrite = false;
 	//是否开始播放视频
 	bool isPlay = false;
+	//水印
+	cv::Mat mark;
 };
 

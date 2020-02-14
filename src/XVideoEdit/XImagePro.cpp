@@ -114,6 +114,17 @@ void XImagePro::Gray()
 	cvtColor(des, des, COLOR_BGR2GRAY);
 }
 
+void XImagePro::Mark(int x, int y, double alpha)
+{
+	if (des.empty())
+		return;
+	if (src2.empty())
+		return;
+
+	Mat roi = des(Rect(x, y, src2.cols, src2.rows));
+	addWeighted(src2, alpha, roi, 1 - alpha, 0, roi);//灰度图像和水印会有冲突，因为要求两个图像是同种类型
+}
+
 XImagePro::XImagePro()
 {
 }

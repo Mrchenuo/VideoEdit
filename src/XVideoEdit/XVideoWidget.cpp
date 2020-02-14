@@ -20,26 +20,6 @@ XVideoWidget::~XVideoWidget()
 {
 }
 
-void XVideoWidget::Mat2QImage(cv::Mat & mat)
-{
-	Mat rgb;
-	if (mat.channels() == 3)
-	{
-		cvtColor(mat, rgb, CV_BGR2RGB);
-		img = QImage((const unsigned char*)(rgb.data),
-			rgb.cols, rgb.rows,
-			rgb.cols*rgb.channels(),
-			QImage::Format_RGB888);
-	}
-	else
-	{
-		img = QImage((const unsigned char*)(mat.data),
-			mat.cols, mat.rows,
-			mat.cols*mat.channels(),
-			QImage::Format_RGB888);
-	}
-}
-
 void XVideoWidget::SetImage(cv::Mat mat)
 {
 	//假设这里的尺寸是以4对齐的，否则图像不连续
@@ -68,8 +48,6 @@ void XVideoWidget::SetImage(cv::Mat mat)
 
 	//复制内存空间
 	memcpy(img.bits(), des.data, des.cols*des.rows*des.elemSize());
-
-	//Mat2QImage(mat);
 	
 	update();
 }

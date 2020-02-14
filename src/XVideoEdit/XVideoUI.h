@@ -27,6 +27,8 @@ public slots:
 	void Play();
 	//ÔÝÍ£
 	void Pause();
+	//Ë®Ó¡
+	void Mark();
 private:
 	Ui::XVideoUIClass ui;
 };
